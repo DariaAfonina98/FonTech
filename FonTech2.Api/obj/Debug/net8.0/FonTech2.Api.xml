@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FonTech2.Api</name>
+    </assembly>
+    <members>
+        <member name="M:FonTech2.Api.Controllers.ReportController.GetUserReports(System.Int64)">
+             <summary>
+              Получение всех отчетов пользователя
+             </summary>
+             <param name="userId"></param>
+             <remarks>
+              Get user reports
+            
+                GET
+             
+                  {
+             
+                  "userId": 1
+             
+                  } 
+             </remarks>
+             <response code="200">если отчет создался</response>
+        </member>
+        <member name="M:FonTech2.Api.Controllers.ReportController.GetReport(System.Int64)">
+             <summary>
+              Получение отчета по идентификатору
+             </summary>
+             <param name="id"></param>
+             <remarks>
+             Request for get report
+            
+                GET
+             
+                 {
+             
+                  "id": 1
+             
+                 }
+             </remarks>
+             <response code="200">если отчет создался</response>
+        </member>
+        <member name="M:FonTech2.Api.Controllers.ReportController.Delete(System.Int64)">
+             <summary>
+              Удаление отчета
+             </summary>
+             <param name="id"></param>
+             <remarks>
+             Request for delete report
+            
+               DELETE
+             
+                 {
+             
+                 "id": 1
+             
+                 }
+             </remarks>
+             <response code="200">если отчет создался</response>
+        </member>
+        <member name="M:FonTech2.Api.Controllers.ReportController.Create(FonTech2.Domain.Dto.Report.CreateReportDto)">
+             <summary>
+              Создание отчета
+             </summary>
+             <param name="dto"></param>
+             <remarks>
+             Request for create report
+             
+            POST
+             
+                {
+             
+                "name": "report#1",
+             
+                "description": "test report",
+             
+                "userId": 1
+             
+                }
+             
+             </remarks>
+             <response code="200">если отчет создался</response>
+        </member>
+        <member name="M:FonTech2.Api.Controllers.ReportController.Update(FonTech2.Domain.Dto.Report.UpdateReportDto)">
+             <summary>
+              Обновление отчета
+             </summary>
+             <param name="dto"></param>
+             <remarks>
+             Request for update report
+            
+               PUT
+             
+                 {
+             
+                  "id": 1,
+             
+                  "name": "Report #2",
+             
+                  "description": "Test report #2"
+             
+                 }
+             </remarks>
+             <response code="200">если отчет создался</response>
+        </member>
+        <member name="M:FonTech2.Api.Startup.AddAuthenticationAndAuthorization(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.AspNetCore.Builder.WebApplicationBuilder)">
+            <summary>
+            Подключение авторизации и аутентификации
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:FonTech2.Api.Startup.AddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Подключение Swagger
+            </summary>
+            <param name="services"></param>
+        </member>
+    </members>
+</doc>
