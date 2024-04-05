@@ -4,6 +4,20 @@
         <name>FonTech2.Api</name>
     </assembly>
     <members>
+        <member name="M:FonTech2.Api.Controllers.AuthController.Register(FonTech2.Domain.Dto.User.RegisterUserDto)">
+            <summary>
+            регистрация пользователя
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FonTech2.Api.Controllers.AuthController.Login(FonTech2.Domain.Dto.User.LoginUserDto)">
+            <summary>
+            логин пользователя
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
         <member name="M:FonTech2.Api.Controllers.ReportController.GetUserReports(System.Int64)">
              <summary>
               Получение всех отчетов пользователя

@@ -9,3 +9,4 @@ C:\Users\Admin\RiderProjects\FonTech2\FonTech2.Domain\obj\Debug\net8.0\FonTech2.
 C:\Users\Admin\RiderProjects\FonTech2\FonTech2.Domain\obj\Debug\net8.0\refint\FonTech2.Domain.dll
 C:\Users\Admin\RiderProjects\FonTech2\FonTech2.Domain\obj\Debug\net8.0\FonTech2.Domain.pdb
 C:\Users\Admin\RiderProjects\FonTech2\FonTech2.Domain\obj\Debug\net8.0\ref\FonTech2.Domain.dll
+C:\Users\Admin\RiderProjects\FonTech2\FonTech2.Domain\obj\Debug\net8.0\FonTech2.Domain.sourcelink.json

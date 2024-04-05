@@ -3,11 +3,11 @@ using FonTech2.Domain.Dto.User;
 using FonTech2.Domain.Interfaces.Services;
 using FonTech2.Domain.Result;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+
 
 namespace FonTech2.Api.Controllers;
 [ApiController]
-public class AuthController : ControllerBase
+public class AuthController : Controller
 {
 
     private readonly IAuthService _authService;
@@ -16,7 +16,12 @@ public class AuthController : ControllerBase
     {
         _authService = authService;
     }
-
+    
+    /// <summary>
+    /// регистрация пользователя
+    /// </summary>
+    /// <param name="dto"></param>
+    /// <returns></returns>
     [HttpPost("register")]
     public async Task<ActionResult<BaseResult<UserDto>>> Register([FromBody] RegisterUserDto dto)
     {
@@ -28,7 +33,11 @@ public class AuthController : ControllerBase
 
         return BadRequest(response);
     }
-
+    /// <summary>
+    /// логин пользователя
+    /// </summary>
+    /// <param name="dto"></param>
+    /// <returns></returns>
     [HttpPost("login")]
     public async Task<ActionResult<BaseResult<TokenDto>>> Login([FromBody]LoginUserDto dto)
     {

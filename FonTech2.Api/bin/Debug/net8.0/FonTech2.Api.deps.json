@@ -508,7 +508,9 @@
           "FluentValidation.DependencyInjectionExtensions": "11.9.0",
           "FonTech2.Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.0",
-          "Serilog": "3.1.1"
+          "Microsoft.IdentityModel.Tokens": "7.1.2",
+          "Serilog": "3.1.1",
+          "System.IdentityModel.Tokens.Jwt": "7.1.2"
         },
         "runtime": {
           "FonTech2.Application.dll": {}

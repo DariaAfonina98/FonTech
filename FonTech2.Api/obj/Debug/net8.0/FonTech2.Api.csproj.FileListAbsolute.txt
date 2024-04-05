@@ -71,3 +71,4 @@ C:\Users\Admin\RiderProjects\FonTech2\FonTech2.Api\bin\Debug\net8.0\Microsoft.Id
 C:\Users\Admin\RiderProjects\FonTech2\FonTech2.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\Admin\RiderProjects\FonTech2\FonTech2.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Admin\RiderProjects\FonTech2\FonTech2.Api\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Admin\RiderProjects\FonTech2\FonTech2.Api\obj\Debug\net8.0\FonTech2.Api.sourcelink.json

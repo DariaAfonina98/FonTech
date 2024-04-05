@@ -23,3 +23,4 @@ C:\Users\Admin\RiderProjects\FonTech2\FonTech2.Application\obj\Debug\net8.0\FonT
 C:\Users\Admin\RiderProjects\FonTech2\FonTech2.Application\obj\Debug\net8.0\refint\FonTech2.Application.dll
 C:\Users\Admin\RiderProjects\FonTech2\FonTech2.Application\obj\Debug\net8.0\FonTech2.Application.pdb
 C:\Users\Admin\RiderProjects\FonTech2\FonTech2.Application\obj\Debug\net8.0\ref\FonTech2.Application.dll
+C:\Users\Admin\RiderProjects\FonTech2\FonTech2.Application\obj\Debug\net8.0\FonTech2.Application.sourcelink.json

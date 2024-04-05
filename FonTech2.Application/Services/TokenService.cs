@@ -46,7 +46,7 @@ public class TokenService :ITokenService
         using var randomNumberGenerator = RandomNumberGenerator.Create();
         randomNumberGenerator.GetBytes(randomNumbers);
         return Convert.ToBase64String(randomNumbers);
-        throw new NotImplementedException();
+        
     }
 
     public ClaimsPrincipal GetPrincipalFromExpiredToken(string accessToken)
@@ -57,7 +57,9 @@ public class TokenService :ITokenService
             ValidateIssuer = true,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtKey))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtKey)),
+            ValidAudience = _audience,
+            ValidIssuer = _issuer
         };
         var tokenHandler = new JwtSecurityTokenHandler();
         var claimsPrincipal = tokenHandler.ValidateToken(accessToken, tokenValidationParameters, out var securityToken);
@@ -105,6 +107,5 @@ public class TokenService :ITokenService
             }
         };
         
-        throw new NotImplementedException();
     }
 }

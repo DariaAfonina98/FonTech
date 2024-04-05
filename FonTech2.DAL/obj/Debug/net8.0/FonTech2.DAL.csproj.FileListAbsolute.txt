@@ -13,3 +13,4 @@ C:\Users\Admin\RiderProjects\FonTech2\FonTech2.DAL\obj\Debug\net8.0\FonTech2.DAL
 C:\Users\Admin\RiderProjects\FonTech2\FonTech2.DAL\obj\Debug\net8.0\refint\FonTech2.DAL.dll
 C:\Users\Admin\RiderProjects\FonTech2\FonTech2.DAL\obj\Debug\net8.0\FonTech2.DAL.pdb
 C:\Users\Admin\RiderProjects\FonTech2\FonTech2.DAL\obj\Debug\net8.0\ref\FonTech2.DAL.dll
+C:\Users\Admin\RiderProjects\FonTech2\FonTech2.DAL\obj\Debug\net8.0\FonTech2.DAL.sourcelink.json

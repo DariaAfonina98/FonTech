@@ -80,7 +80,7 @@ public class AuthService :  IAuthService
         }
     }
 
-    public async Task <BaseResult<TokenDto>> Login(LoginUserDto dto)
+    public async Task<BaseResult<TokenDto>> Login(LoginUserDto dto)
     {
         try
         {
@@ -95,8 +95,8 @@ public class AuthService :  IAuthService
                 
             }
 
-            var isVerifyPassword = IsVerifyPassword(user.Password, dto.Password);
-            if (!isVerifyPassword)
+            if(!IsVerifyPassword(user.Password, dto.Password))
+           
             {
                 return new BaseResult<TokenDto>()
                 {
@@ -105,14 +105,14 @@ public class AuthService :  IAuthService
                 };
             }
 
-            var userToken = await _userTokenRepository.GetAll().FirstOrDefaultAsync(x => x.Id == user.Id);
+            var userToken = await _userTokenRepository.GetAll().FirstOrDefaultAsync(x => x.UserId == user.Id);
 
-            var claim = new List<Claim>()
+            var claims = new List<Claim>()
             {
                 new Claim(ClaimTypes.Name, user.Login),
                 new Claim(ClaimTypes.Role, "User")
             };
-            var accessToken = _tokenService.GenerateAccessToken(claim);
+            var accessToken = _tokenService.GenerateAccessToken(claims);
             
             var refreshToken = _tokenService.GenerateRefreshToken();
             if (userToken == null)
@@ -155,7 +155,7 @@ public class AuthService :  IAuthService
     {
         var bytes = SHA256.HashData(Encoding.UTF8.GetBytes(password));
 
-        return BitConverter.ToString(bytes).ToLower();
+        return Convert.ToBase64String(bytes);
     }
 
     private bool IsVerifyPassword(string userPasswordHash,string userPassword)
