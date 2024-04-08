@@ -47,13 +47,47 @@ public class RoleService : IRoleService
         
     }
 
-    public Task<BaseResult<Role>> DeleteRoleAsync(long id)
+    public async Task<BaseResult<Role>> DeleteRoleAsync(long id)
     {
-        throw new NotImplementedException();
+        var role = await _roleRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
+        if (role == null)
+        {
+            return new BaseResult<Role>()
+            {
+                ErrorMessage = ErrorMessage.RoleNotFound,
+                ErrorCode =(int) ErrorCodes.RoleNotFound
+
+            };
+        }
+
+        await _roleRepository.RemoveAsync(role);
+
+        return new BaseResult<Role>()
+        {
+            Data = role
+        };
+      
     }
 
-    public Task<BaseResult<Role>> UpdateRoleAsync(RoleDto dto)
+    public async Task<BaseResult<Role>> UpdateRoleAsync(RoleDto dto)
     {
-        throw new NotImplementedException();
+        var role = await _roleRepository.GetAll().FirstOrDefaultAsync(x => x.Id == dto.Id);
+        if (role == null)
+        {
+            return new BaseResult<Role>()
+            {
+                ErrorMessage = ErrorMessage.RoleNotFound,
+                ErrorCode =(int) ErrorCodes.RoleNotFound
+
+            };
+        }
+
+        role.Name = dto.Name;
+        await _roleRepository.UpdateAsync(role);
+
+        return new BaseResult<Role>()
+        {
+            Data = role
+        };
     }
 }

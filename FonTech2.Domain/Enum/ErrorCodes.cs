@@ -14,7 +14,8 @@ public enum ErrorCodes
     PasswordNotEqualsPasswordConfirm = 21,
     PasswordWrong=22,
     
-    RoleAlreadyExists = 31
+    RoleAlreadyExists = 31,
+    RoleNotFound = 32
     
     
 }
