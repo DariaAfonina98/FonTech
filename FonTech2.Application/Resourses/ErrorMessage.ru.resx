@@ -41,4 +41,7 @@
     <data name="InvalidClientRequest" xml:space="preserve">
         <value>Невалидный запрос клиента</value>
     </data>
+    <data name="RoleAlreadyExists" xml:space="preserve">
+        <value>Такая роль уже есть</value>
+    </data>
 </root>

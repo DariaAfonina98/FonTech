@@ -34,6 +34,8 @@ public class AuthService :  IAuthService
 
     public async Task<BaseResult<UserDto>> Register(RegisterUserDto dto)
     {
+        throw new UnauthorizedAccessException("UnauthorizedAccessException");
+        
         if (dto.Password != dto.PasswordConfirm)
         {
             return new BaseResult<UserDto>()
@@ -43,9 +45,7 @@ public class AuthService :  IAuthService
                     
             };
         }
-
-        try
-        {
+        
             var user = await _userRepository.GetAll().FirstOrDefaultAsync(x=>x.Login==dto.Login);
 
             if (user != null)
@@ -68,16 +68,9 @@ public class AuthService :  IAuthService
             {
                 Data = _mapper.Map<UserDto>(user)
             };
-        }
-        catch (Exception ex)
-        {
-            _logger.Error(ex, ex.Message);
-            return new BaseResult<UserDto>()
-            {
-                ErrorMessage = ErrorMessage.InternalServerError,
-                ErrorCode = (int)ErrorCodes.InternalServerError
-            };
-        }
+        
+       
+        
     }
 
     public async Task<BaseResult<TokenDto>> Login(LoginUserDto dto)

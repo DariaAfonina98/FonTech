@@ -1,7 +1,9 @@
 using FonTech2.Api;
+using FonTech2.Api.Middlewares;
 using FonTech2.Application.DependencyInjection;
 using FonTech2.DAL.DependencyInjection;
 using FonTech2.Domain.Settings;
+using Microsoft.AspNetCore.Diagnostics;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +21,8 @@ builder.Services.AddApplication();
 
 var app = builder.Build();
 
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -31,6 +35,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 app.UseHttpsRedirection();
 
 app.MapControllers();
