@@ -95,7 +95,8 @@ public class ReportController : ControllerBase
     /// 
     ///     }
     /// </remarks>
-    /// <response code="200">если отчет создался</response>
+    /// <response code="200">если отчет удалился</response>
+    /// <response code="400">если отчет не был удален</response>
     [HttpDelete(nameof(id))]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -131,6 +132,7 @@ public class ReportController : ControllerBase
     /// 
     /// </remarks>
     /// <response code="200">если отчет создался</response>
+    /// <response code="400">если отчет не был создан</response>
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -164,7 +166,8 @@ public class ReportController : ControllerBase
     /// 
     ///     }
     /// </remarks>
-    /// <response code="200">если отчет создался</response>
+    /// <response code="200">если отчет обновился</response>
+    /// <response code="400">если отчет не был обновлен</response>
     [HttpPut]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FonTech2.Api.Controllers;
 [ApiController]
-public class AuthController : Controller
+public class AuthController : ControllerBase
 {
 
     private readonly IAuthService _authService;

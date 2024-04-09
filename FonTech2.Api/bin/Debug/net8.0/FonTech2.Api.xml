@@ -70,7 +70,8 @@
              
                  }
              </remarks>
-             <response code="200">если отчет создался</response>
+             <response code="200">если отчет удалился</response>
+             <response code="400">если отчет не был удален</response>
         </member>
         <member name="M:FonTech2.Api.Controllers.ReportController.Create(FonTech2.Domain.Dto.Report.CreateReportDto)">
              <summary>
@@ -94,6 +95,7 @@
              
              </remarks>
              <response code="200">если отчет создался</response>
+             <response code="400">если отчет не был создан</response>
         </member>
         <member name="M:FonTech2.Api.Controllers.ReportController.Update(FonTech2.Domain.Dto.Report.UpdateReportDto)">
              <summary>
@@ -115,7 +117,68 @@
              
                  }
              </remarks>
-             <response code="200">если отчет создался</response>
+             <response code="200">если отчет обновился</response>
+             <response code="400">если отчет не был обновлен</response>
+        </member>
+        <member name="M:FonTech2.Api.Controllers.RoleController.Create(FonTech2.Domain.Dto.Role.RoleDto)">
+             <summary>
+              Создание роли
+             </summary>
+             <param name="dto"></param>
+             <remarks>
+             Request for create report
+             
+            POST
+             
+                {
+             
+                "name": "Admin",
+             
+                }
+             
+             </remarks>
+             <response code="200">если роль создалась</response>
+             <response code="400">если роль не создалась</response>
+        </member>
+        <member name="M:FonTech2.Api.Controllers.RoleController.Delete(System.Int64)">
+             <summary>
+              Удаление роли с указанием идентификатора 
+             </summary>
+             <param name="id"></param>
+             <remarks>
+             Request for delete report
+            
+               DELETE
+             
+                 {
+             
+                 "id": 1
+             
+                 }
+             </remarks>
+             <response code="200">если роль удалилась</response>
+             <response code="400">если роль не была удалена</response>
+        </member>
+        <member name="M:FonTech2.Api.Controllers.RoleController.Update(FonTech2.Domain.Dto.Role.RoleDto)">
+             <summary>
+              Обновление роли с указанием основных свойств
+             </summary>
+             <param name="dto"></param>
+             <remarks>
+             Request for update report
+            
+               PUT
+             
+                 {
+             
+                  "id": 1,
+             
+                  "name": "Admin"
+             
+                 }
+             </remarks>
+             <response code="200">если роль обновилась</response>
+             <response code="400">если роль не была обновлена</response>
         </member>
         <member name="M:FonTech2.Api.Startup.AddAuthenticationAndAuthorization(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.AspNetCore.Builder.WebApplicationBuilder)">
             <summary>
