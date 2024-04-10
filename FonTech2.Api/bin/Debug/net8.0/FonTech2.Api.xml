@@ -120,7 +120,7 @@
              <response code="200">если отчет обновился</response>
              <response code="400">если отчет не был обновлен</response>
         </member>
-        <member name="M:FonTech2.Api.Controllers.RoleController.Create(FonTech2.Domain.Dto.Role.RoleDto)">
+        <member name="M:FonTech2.Api.Controllers.RoleController.Create(FonTech2.Domain.Dto.Role.CreateRoleDto)">
              <summary>
               Создание роли
              </summary>
@@ -179,6 +179,27 @@
              </remarks>
              <response code="200">если роль обновилась</response>
              <response code="400">если роль не была обновлена</response>
+        </member>
+        <member name="M:FonTech2.Api.Controllers.RoleController.AddRoleForUser(FonTech2.Domain.Dto.Role.UserRoleDto)">
+             <summary>
+              Добавление роли пользователю
+             </summary>
+             <param name="dto"></param>
+             <remarks>
+             Request for add role for user
+             
+            POST
+             
+                {
+             
+                "login": "user #1",
+                "roleName": "Admin"
+             
+                }
+             
+             </remarks>
+             <response code="200">если роль добавилась пользователю</response>
+             <response code="400">если роль не добавилась пользователю</response>
         </member>
         <member name="M:FonTech2.Api.Startup.AddAuthenticationAndAuthorization(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.AspNetCore.Builder.WebApplicationBuilder)">
             <summary>

@@ -3,12 +3,14 @@ using FonTech2.Domain.Dto.Role;
 using FonTech2.Domain.Entity;
 using FonTech2.Domain.Interfaces.Services;
 using FonTech2.Domain.Result;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FonTech2.Api.Controllers;
 
 [Consumes(MediaTypeNames.Application.Json)]
 [ApiController]
+[Authorize(Roles = "Admin")]
 [Route("api/[controller]")]
 
 public class RoleController : ControllerBase
@@ -41,7 +43,7 @@ public class RoleController : ControllerBase
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<BaseResult<Role>>> Create([FromBody] RoleDto dto)
+    public async Task<ActionResult<BaseResult<Role>>> Create([FromBody] CreateRoleDto dto)
     {
         var response =await _roleService.CreateRoleAsync(dto);
         if (response.IsSuccess)
@@ -109,6 +111,39 @@ public class RoleController : ControllerBase
     public async Task<ActionResult<BaseResult<Role>>> Update ([FromBody] RoleDto dto)
     {
         var response =await _roleService.UpdateRoleAsync(dto);
+        if (response.IsSuccess)
+        {
+            return Ok(response);
+        }
+
+        return BadRequest(response);
+    }
+    
+    /// <summary>
+    ///  Добавление роли пользователю
+    /// </summary>
+    /// <param name="dto"></param>
+    /// <remarks>
+    /// Request for add role for user
+    /// 
+    ///POST
+    /// 
+    ///    {
+    /// 
+    ///    "login": "user #1",
+    ///    "roleName": "Admin"
+    /// 
+    ///    }
+    /// 
+    /// </remarks>
+    /// <response code="200">если роль добавилась пользователю</response>
+    /// <response code="400">если роль не добавилась пользователю</response>
+    [HttpPost("addRole")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<BaseResult<Role>>> AddRoleForUser ([FromBody] UserRoleDto dto)
+    {
+        var response =await _roleService.AddRoleForUserAsync(dto);
         if (response.IsSuccess)
         {
             return Ok(response);
