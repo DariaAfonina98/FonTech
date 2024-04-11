@@ -5,7 +5,7 @@ using FonTech2.Domain.Entity;
 using FonTech2.Domain.Enum;
 using FonTech2.Domain.Interfaces.Services;
 using FonTech2.Domain.Interfaces.Validations;
-using FonTech2.Domain.Repositories;
+using FonTech2.Domain.Interfaces.Repositories;
 using FonTech2.Domain.Result;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -109,9 +109,7 @@ public class ReportService : IReportService
     /// <inheritdoc />
     public async Task<BaseResult<ReportDto>> CreateReportAsync(CreateReportDto dto)
     {
-
-        try
-        {
+        
             var user = await _userRepository.GetAll().FirstOrDefaultAsync(x => x.Id == dto.UserId);
             var report = await _reportRepository.GetAll().FirstOrDefaultAsync(x => x.Name == dto.Name);
             var result = _reportValidator.CreateValidator(report, user);
@@ -138,24 +136,15 @@ public class ReportService : IReportService
             {
                 Data = _mapper.Map<ReportDto>(report)
             };
-        }
-        catch (Exception ex)
-        {
-            _logger.Error(ex, ex.Message);
-            return new BaseResult<ReportDto>()
-            {
-                ErrorMessage = ErrorMessage.InternalServerError,
-                ErrorCode = (int)ErrorCodes.InternalServerError
-            };
-        }
+        
+        
         
     }
 
     /// <inheritdoc />
     public async Task<BaseResult<ReportDto>> DeleteReportAsync(long id)
     {
-        try
-        {
+        
             var report = await _reportRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
             var result = _reportValidator.ValidateOnNull(report);
             if (!result.IsSuccess)
@@ -167,29 +156,21 @@ public class ReportService : IReportService
                 };
             }
 
-            await _reportRepository.RemoveAsync(report);
+            _reportRepository.Remove(report);
+            await _reportRepository.SaveChangesAsync();
             return new BaseResult<ReportDto>()
             {
                 Data = _mapper.Map<ReportDto>(report)
             };
-        }
-        catch (Exception ex)
-        {
-            _logger.Error(ex, ex.Message);
-            return new BaseResult<ReportDto>()
-            {
-                ErrorMessage = ErrorMessage.InternalServerError,
-                ErrorCode = (int)ErrorCodes.InternalServerError
-            };
-        }
+        
+        
        
     }
 
     /// <inheritdoc />
     public async Task<BaseResult<ReportDto>> UpdateReportAsync(UpdateReportDto dto)
     {
-        try
-        {
+      
             var report =await _reportRepository.GetAll().FirstOrDefaultAsync(x => x.Id == dto.Id);
             var result = _reportValidator.ValidateOnNull(report);
             if (!result.IsSuccess)
@@ -203,22 +184,13 @@ public class ReportService : IReportService
 
             report.Name = dto.Name;
             report.Description = dto.Description;
-
-            await _reportRepository.UpdateAsync(report);
+            var updatedReport = _reportRepository.Update(report);
+            await _reportRepository.SaveChangesAsync();
             return new BaseResult<ReportDto>()
             {
-                Data = _mapper.Map<ReportDto>(report)
+                Data = _mapper.Map<ReportDto>(updatedReport)
             };
-        }
-        catch (Exception ex)
-        {
-            _logger.Error(ex, ex.Message);
-            return new BaseResult<ReportDto>()
-            {
-                ErrorMessage = ErrorMessage.InternalServerError,
-                ErrorCode = (int)ErrorCodes.InternalServerError
-            };
-        }
+       
     }
 }
     

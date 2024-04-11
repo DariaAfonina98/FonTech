@@ -4,7 +4,7 @@ using FonTech2.Domain.Dto.Role;
 using FonTech2.Domain.Entity;
 using FonTech2.Domain.Enum;
 using FonTech2.Domain.Interfaces.Services;
-using FonTech2.Domain.Repositories;
+using FonTech2.Domain.Interfaces.Repositories;
 using FonTech2.Domain.Result;
 using Microsoft.EntityFrameworkCore;
 
@@ -64,8 +64,8 @@ public class RoleService : IRoleService
 
             };
         }
-
-        await _roleRepository.RemoveAsync(role);
+        _roleRepository.Remove(role);
+        await _roleRepository.SaveChangesAsync();
 
         return new BaseResult<RoleDto>()
         {
@@ -88,11 +88,12 @@ public class RoleService : IRoleService
         }
 
         role.Name = dto.Name;
-        await _roleRepository.UpdateAsync(role);
+        var updatedRole = _roleRepository.Update(role);
+        await _roleRepository.SaveChangesAsync();
 
         return new BaseResult<RoleDto>()
         {
-            Data = _mapper.Map<RoleDto>(role)
+            Data = _mapper.Map<RoleDto>(updatedRole)
         };
     }
 

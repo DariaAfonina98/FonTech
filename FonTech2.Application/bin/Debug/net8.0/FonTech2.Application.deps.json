@@ -233,6 +233,9 @@
         }
       },
       "FonTech2.Domain/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "8.0.0"
+        },
         "runtime": {
           "FonTech2.Domain.dll": {}
         }

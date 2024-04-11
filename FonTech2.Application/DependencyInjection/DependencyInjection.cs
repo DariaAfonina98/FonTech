@@ -15,6 +15,8 @@ public static class DependencyInjection
     public static void AddApplication(this IServiceCollection services)
     {
         services.AddAutoMapper(typeof(ReportMapping));
+        services.AddAutoMapper(typeof(UserMapping));
+        services.AddAutoMapper(typeof(RoleMapping));
         InitServices(services);
     }
 

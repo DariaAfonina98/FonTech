@@ -6,7 +6,7 @@ using FonTech2.Application.Resourses;
 using FonTech2.Domain.Dto;
 using FonTech2.Domain.Entity;
 using FonTech2.Domain.Interfaces.Services;
-using FonTech2.Domain.Repositories;
+using FonTech2.Domain.Interfaces.Repositories;
 using FonTech2.Domain.Result;
 using FonTech2.Domain.Settings;
 using Microsoft.EntityFrameworkCore;
@@ -96,7 +96,8 @@ public class TokenService :ITokenService
         var newRefreshToken = GenerateRefreshToken();
 
         user.UserToken.RefreshToken = newRefreshToken;
-        await _userRepository.UpdateAsync(user);
+        _userRepository.Update(user);
+        await _userRepository.SaveChangesAsync();
 
         return new BaseResult<TokenDto>()
         {
