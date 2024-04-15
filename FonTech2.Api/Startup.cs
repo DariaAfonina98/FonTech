@@ -68,7 +68,7 @@ public static class Startup
            options.SwaggerDoc("v1", new OpenApiInfo()
            {
                Version = "v1",
-               Title = "FonTech2.API",
+               Title = "FonTech2.Producer.API",
                Description = "This is version 1.0",
                TermsOfService = new Uri("https://github.com/DariaAfonina98"),
                Contact = new OpenApiContact()
@@ -82,7 +82,7 @@ public static class Startup
            options.SwaggerDoc("v2", new OpenApiInfo()
            {
                Version = "v2",
-               Title = "FonTech2.API",
+               Title = "FonTech2.Producer.API",
                Description = "This is version 2.0",
                TermsOfService = new Uri("https://github.com/DariaAfonina98"),
                Contact = new OpenApiContact()
