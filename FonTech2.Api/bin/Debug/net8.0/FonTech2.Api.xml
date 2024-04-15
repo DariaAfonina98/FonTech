@@ -201,6 +201,13 @@
              <response code="200">если роль добавилась пользователю</response>
              <response code="400">если роль не добавилась пользователю</response>
         </member>
+        <member name="M:FonTech2.Api.Controllers.RoleController.DeleteRoleForUser(FonTech2.Domain.Dto.Role.UserRoleDto)">
+            <summary>
+            Удаление роли у пользователя
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
         <member name="M:FonTech2.Api.Startup.AddAuthenticationAndAuthorization(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.AspNetCore.Builder.WebApplicationBuilder)">
             <summary>
             Подключение авторизации и аутентификации

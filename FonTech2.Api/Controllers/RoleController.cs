@@ -1,5 +1,6 @@
 using System.Net.Mime;
 using FonTech2.Domain.Dto.Role;
+using FonTech2.Domain.Dto.UserRole;
 using FonTech2.Domain.Entity;
 using FonTech2.Domain.Interfaces.Services;
 using FonTech2.Domain.Result;
@@ -10,7 +11,7 @@ namespace FonTech2.Api.Controllers;
 
 [Consumes(MediaTypeNames.Application.Json)]
 [ApiController]
-[Authorize(Roles = "Admin")]
+[Authorize(Roles = "User")]
 [Route("api/[controller]")]
 
 public class RoleController : ControllerBase
@@ -144,6 +145,46 @@ public class RoleController : ControllerBase
     public async Task<ActionResult<BaseResult<Role>>> AddRoleForUser ([FromBody] UserRoleDto dto)
     {
         var response =await _roleService.AddRoleForUserAsync(dto);
+        if (response.IsSuccess)
+        {
+            return Ok(response);
+        }
+
+        return BadRequest(response);
+    }
+    
+    
+    /// <summary>
+    /// Удаление роли у пользователя
+    /// </summary>
+    /// <param name="dto"></param>
+    /// <returns></returns>
+    [HttpDelete("deleteRole")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<BaseResult<Role>>> DeleteRoleForUser ([FromBody] DeleteUserRoleDto dto)
+    {
+        var response =await _roleService.DeleteRoleForUserAsync(dto);
+        if (response.IsSuccess)
+        {
+            return Ok(response);
+        }
+
+        return BadRequest(response);
+    }
+    
+    
+    /// <summary>
+    /// Обновление роли у пользователя
+    /// </summary>
+    /// <param name="dto"></param>
+    /// <returns></returns>
+    [HttpPut("updateRole")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<BaseResult<Role>>> UpdateRoleForUser ([FromBody] UpdateUserRoleDto dto)
+    {
+        var response =await _roleService.UpdateRoleForUserAsync(dto);
         if (response.IsSuccess)
         {
             return Ok(response);

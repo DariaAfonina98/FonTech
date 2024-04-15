@@ -1,4 +1,5 @@
 using FonTech2.Domain.Dto.Role;
+using FonTech2.Domain.Dto.UserRole;
 using FonTech2.Domain.Entity;
 using FonTech2.Domain.Result;
 
@@ -38,4 +39,19 @@ public interface IRoleService
     /// <param name="dto"></param>
     /// <returns></returns>
     Task<BaseResult<UserRoleDto>> AddRoleForUserAsync(UserRoleDto dto);
+
+    
+    /// <summary>
+    /// Удаление роли у пользователя
+    /// </summary>
+    /// <param name="dto"></param>
+    /// <returns></returns>
+    Task<BaseResult<UserRoleDto>> DeleteRoleForUserAsync(DeleteUserRoleDto dto);
+
+    /// <summary>
+    ///  Изменение роли у пользователя
+    /// </summary>
+    /// <param name="dto"></param>
+    /// <returns></returns>
+    Task<BaseResult<UserRoleDto>> UpdateRoleForUserAsync(UpdateUserRoleDto dto);
 }

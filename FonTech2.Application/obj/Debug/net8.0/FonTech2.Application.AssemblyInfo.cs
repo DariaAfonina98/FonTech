@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FonTech2.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+add1cc82ef6ea3baefae34c708e60d1524a3e4bb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd86566e9736bf86ca3498fc52d1c33ccbfeb243")]
 [assembly: System.Reflection.AssemblyProductAttribute("FonTech2.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FonTech2.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

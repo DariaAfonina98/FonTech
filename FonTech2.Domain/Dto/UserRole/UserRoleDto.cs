@@ -1,4 +1,4 @@
-namespace FonTech2.Domain.Dto.Role;
+namespace FonTech2.Domain.Dto.UserRole;
 
 public class UserRoleDto
 {
